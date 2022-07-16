@@ -7,7 +7,7 @@ check-dependencies:
 
 .PHONY: build
 build: check-dependencies
-	colcon build --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+	colcon build --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON --symlink-install
 
 .PHONY: clean
 clean:
