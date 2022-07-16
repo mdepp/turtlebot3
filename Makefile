@@ -13,6 +13,9 @@ build: check-dependencies
 clean:
 	rm -rf build/ install/ log/
 
+.PHONY: rosdep
+rosdep:
+	rosdep install --from-paths src -y
 
 OPENCR_PORT=/dev/ttyACM0
 OPENCR_MODEL=burger
