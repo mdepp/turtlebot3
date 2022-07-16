@@ -1,5 +1,12 @@
+.phony: all
+all: build
+
+.phony: check-dependencies
+check-dependencies:
+	rosdep check --from-paths src
+
 .PHONY: build
-build:
+build: check-dependencies
 	colcon build \
 		--cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
 		--allow-overriding turtlesim
