@@ -1,0 +1,2 @@
+ATTR{index}=="2", SUBSYSTEM=="video4linux", ATTRS{interface}=="Intel(R) RealSense(TM) Depth Camera 455  Depth", SYMLINK+="robot/camera/depth", MODE:="0666"
+ATTR{index}=="0", SUBSYSTEM=="video4linux", ATTRS{interface}=="Intel(R) RealSense(TM) Depth Camera 455  RGB", SYMLINK+="robot/camera/rgb", MODE:="0666"
