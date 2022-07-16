@@ -20,3 +20,11 @@ update-opencr-firmware:
 	wget https://github.com/ROBOTIS-GIT/OpenCR-Binaries/raw/master/turtlebot3/ROS2/latest/opencr_update.tar.bz2 
 	tar -xvf opencr_update.tar.bz2 
 	cd opencr_update && ./update.sh $(OPENCR_PORT) $(OPENCR_MODEL).opencr
+
+
+.PHONY: update-subtrees
+update-subtrees:
+	git subtree pull --prefix src/ld08_driver \
+		https://github.com/ROBOTIS-GIT/ld08_driver.git \
+		ros2-devel \
+		--squash
