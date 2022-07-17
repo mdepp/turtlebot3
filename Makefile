@@ -45,3 +45,7 @@ update-subtrees:
 		https://github.com/ROBOTIS-GIT/ld08_driver.git \
 		ros2-devel \
 		--squash
+	git subtree pull --prefix src/realsense-ros \
+		https://github.com/IntelRealSense/realsense-ros.git \
+		ros2-beta \
+		--squash
