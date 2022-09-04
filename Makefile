@@ -1,22 +1,13 @@
 .phony: all
 all: build
 
-# We install librealsense2 from source separately, so don't try to install
-# the ROS version
-SKIP_KEYS = librealsense2
-# To make librealsense2 link properly, since it's installed using vcpkg
-VCPKG_DIR ?= $$(HOME)/source/vcpkg
-
 .phony: check-dependencies
 check-dependencies:
-	rosdep check --from-paths src --skip-keys=$(SKIP_KEYS)
+	rosdep check --from-paths src
 
 .PHONY: build
 build: check-dependencies
-	colcon build \
-		--cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
-		--cmake-args -DCMAKE_TOOLCHAIN_FILE=$(VCPKG_DIR)/scripts/buildsystems/vcpkg.cmake \
-		--symlink-install
+	colcon build --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON --symlink-install
 
 .PHONY: clean
 clean:
@@ -24,7 +15,7 @@ clean:
 
 .PHONY: rosdep
 rosdep:
-	rosdep install --from-paths src -y --skip-keys=$(SKIP_KEYS)
+	rosdep install --from-paths src -y
 
 OPENCR_PORT=/dev/ttyACM0
 OPENCR_MODEL=burger

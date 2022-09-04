@@ -24,7 +24,3 @@ This is from memory and may be missing steps.
     ```bash
     make update-opencr-firmware
     ```
-
-  - Install [vcpkg](https://github.com/microsoft/vcpkg). The Makefile assumes it is installed in `~/source/vcpkg`; if not you will have to update the Makefile.
-
-  - Install librealsense2 using vcpkg, as explained [here](https://github.com/IntelRealSense/librealsense/tree/v2.50.0#building-librealsense---using-vcpkg)
