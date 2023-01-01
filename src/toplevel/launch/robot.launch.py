@@ -2,30 +2,24 @@ import os
 
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
-from launch.substitutions import LaunchConfiguration
+from launch.actions import IncludeLaunchDescription
+from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch_ros.actions import Node
 
 
 def generate_launch_description():
-    TURTLEBOT3_MODEL = os.environ["TURTLEBOT3_MODEL"]
-
-    tb3_param_dir = LaunchConfiguration(
-        "tb3_param_dir",
-        default=os.path.join(
-            get_package_share_directory("turtlebot3_bringup"),
-            "param",
-            TURTLEBOT3_MODEL + ".yaml",
-        ),
-    )
 
     return LaunchDescription(
         [
-            Node(
-                package="turtlebot3_node",
-                executable="turtlebot3_ros",
-                parameters=[tb3_param_dir],
-                arguments=["-i", "/dev/ttyACM0"],
-                output="screen",
+            IncludeLaunchDescription(
+                PythonLaunchDescriptionSource(
+                    [
+                        os.path.join(
+                            get_package_share_directory("turtlebot3_bringup"), "launch"
+                        ),
+                        "/robot.launch.py",
+                    ]
+                ),
             ),
             Node(
                 package="cv_camera",
