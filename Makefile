@@ -36,3 +36,7 @@ update-subtrees:
 		https://github.com/ROBOTIS-GIT/ld08_driver.git \
 		ros2-devel \
 		--squash
+	git subtree pull --prefix src/cv_camera \
+		git@github.com:mdepp/cv_camera.git \
+		humble-devel \
+		--squash
